@@ -1,0 +1,41 @@
+<ioobjects>
+
+<!--  
+    This is an example how to specify IOObjects and theirs various renderers.
+	<ioobject
+		name="Document"
+		class="com.rapidminer.operator.text.Document"
+		reportable="true">
+	  <renderer>com.rapidminer.gui.renderer.text.DocumentRenderer</renderer>
+	</ioobject>
+	
+    <ioobject
+        name="Word List"
+        class="com.rapidminer.operator.text.WordList"
+        reportable="true">
+      <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
+    </ioobject>
+ -->
+  <!-- Attribute Weights -->
+    
+    <ioobject 
+        name="Ontology Hierarchy" 
+        class="lod.utils.OntologyHierarchy"
+        reportable="true">
+        <renderer>lod.gui.renderer.OntologyHierarchyRenderer</renderer>      
+        <renderer>lod.gui.renderer.OntologyHierarchyGraphRenderer</renderer>                     
+    </ioobject>
+        <ioobject 
+        name="RDF Holder" 
+        class="lod.rdf.model.RdfHolder"
+        reportable="true">
+        <renderer>lod.gui.renderer.RdfDataRenderer</renderer>                       
+    </ioobject>
+    
+    <ioobject 
+        name="Schema Matching Results" 
+        class="de.dwslab.rmdi.schemamatching.models.MatcherResults"
+        reportable="true">
+        <renderer>de.dwslab.rmdi.gui.renderers.MatchingResultsRenderer</renderer>                       
+    </ioobject>
+</ioobjects>

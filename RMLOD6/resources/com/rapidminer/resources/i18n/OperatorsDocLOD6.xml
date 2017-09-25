@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<operatorHelp lang="en_EN">
+	<operator>
+		<name>SPARQL Data Importer</name>
+		<synopsis>Issues a custom SPARQL query to create a data table.
+		</synopsis>
+		<help>This operator issues a custom SPARQL query. You can use
+			placeholders in the query referring to links previously generated,
+			marked in asterisks, e.g., *City_link_to_DBpedia*.
+		</help>
+	</operator>
+	<operator>
+		<name>Custom SPARQL Generator</name>
+		<synopsis>Issues a custom SPARQL query to create additional
+			attributes.
+		</synopsis>
+		<help>This operator issues a custom SPARQL query. The SPARQL query may
+			contain variables
+			referring to attributes containing URIs, marked in
+			asterisks, e.g.
+			*DBpedia_URI*.
+			All selected variables become attributes
+			in the new dataset. There are
+			three variants
+			of creating attributes for
+			variables with more than one result per
+			instance:
+			using only the first
+			value (as there is no order, this is essentially a
+			random selection),
+			multiplying the instances (e.g., for a variable with three result
+			values, three
+			copies of the instance are created), and creating one
+			boolean feature
+			per result value.
+		</help>
+	</operator>
+	<operator>
+		<name>Pattern-based Linker</name>
+		<synopsis>A static linker based on simple text pattern.</synopsis>
+		<help>This operator merges the value of a specified column with a
+			set
+			of tokens and produces a new column containing
+			merged value, based on
+			a pattern, e.g., "http://dbpedia.org/resource/*City*". Placeholders
+			can be used in the pattern,
+			which are then filled from the
+			corresponding columns. For example,
+			the placeholder *City* will be
+			replaced by the value of the City
+			attribute
+			(note that the attribute
+			value is case sensitive) at the given position.
+		</help>
+	</operator>
+	<operator>
+		<name>Label-based Linker</name>
+		<synopsis>Dynamic linker which finds entities by their label through
+			SPARQL queries.
+		</synopsis>
+		<help>This operator links the value of a specified column with LOD
+			entity (entities), for each specified SPARQL (DBPedia by default)
+			endpoint, and produces a new column (columns) containing the linked
+			entity (entities).
+		</help>
+	</operator>
+	<operator>
+		<name>DBpedia Lookup Linker</name>
+		<synopsis>Linker that exploits the DBpedia lookup service for linking.
+		</synopsis>
+		<help>This operator searches for strings in an attribute using DBpedia
+			lookup,
+			and tries to find a good match. If multiple results are
+			returned, the
+			link
+			is chosen either by using the first result, or by
+			minimum edit distance
+			of the label to the original attribute. A type
+			restriction (using the
+			DBpedia
+			ontology) can be set optionally.
+		</help>
+	</operator>
+	<operator>
+		<name>DBpedia Spotlight Linker</name>
+		<synopsis>Linker that exploits the DBpedia spotlight service for
+			linking.
+		</synopsis>
+		<help>This operator passes an attribute to the DBpedia spotlight
+			service and returns a set of links.
+		</help>
+	</operator>
+	<operator>
+		<name>Web Validator</name>
+		<synopsis>Removes non-existent links.</synopsis>
+		<help>This operator checks the existence of a specified attribute by
+			querying SPARQL (DBPedia by default) endpoint and creates a set of
+			existing entries.
+		</help>
+	</operator>
+	<operator>
+		<name>Direct Types</name>
+		<synopsis>Generates a binary attribute (true|false) for each direct
+			type.
+		</synopsis>
+		<help>Generates a binary attribute (true|false) for each type that the
+			instance has.
+			e.g., x rdf:type http://foo/bar for the attribute att
+			with value x would
+			lead to
+			att_type_http://foo/bar = true for the
+			instance x
+		</help>
+	</operator>
+	<operator>
+		<name>Data Properties</name>
+		<synopsis>Generates attributes from data properties.</synopsis>
+		<help>Generates an attribute for each data property. E.g., for the
+			triple {http://foo.bar/x, http://foo.bar/y, 12^^xsd:int},
+			where
+			http://foo.bar/x is the value of the attribute to expand,
+			a new
+			attribute http://foo.bar/y with value 12 would be inserted.
+			Note: for
+			attributes with multiple values, one value is randomly
+			chosen.
+		</help>
+	</operator>
+	<operator>
+		<name>Qualified Relations Numeric</name>
+		<synopsis>Counts incoming and outgoing relations by property and type.
+		</synopsis>
+		<help>This generator creates a numeric attribute for incoming and
+			outgoing relations from/to an object from a certain type. E.g. for
+			the triples
+			{http://foo.bar/s, http://foo.bar/p, http://foo.bar/o},
+			{http://foo.bar/o rdf:type http://foo.bar/t}
+			the relation
+			uri_out_type_numeric_http://foo.bar/p_type_http://foo.bar/t
+			would be
+			set to 1.
+		</help>
+	</operator>
+	<operator>
+		<name>Qualified Relations Boolean</name>
+		<synopsis>Generates a binary attribute (true|false) for incoming and
+			outgoing relations by property and type.
+		</synopsis>
+		<help>This generator creates a binary attribute (true|false) for
+			incoming and outgoing relations from/to an object from a certain
+			type. E.g. for the triples
+			{http://foo.bar/s http://foo.bar/p
+			http://foo.bar/o}
+			{http://foo.bar/o rdf:type http://foo.bar/t}
+			the
+			relation uri_in_type_boolean_http://foo.bar/p_type_http://foo.bar/t
+			would be set to "true".
+		</help>
+	</operator>
+	<operator>
+		<name>Relations Numeric</name>
+		<synopsis>Counts incoming and outgoing relations by property.
+		</synopsis>
+		<help>This generator creates a numeric attribute for the number of
+			incoming and outgoing relations. E.g. for the triple
+			{http://foo.bar/s, http://foo.bar/p, http://foo.bar/o}
+			the relation
+			uri_out_numeric_http://foo.bar/p would be set to 1.0, if no
+			other
+			outgoing relations of type http://foo.bar/p exist.
+		</help>
+	</operator>
+	<operator>
+		<name>Relations Boolean</name>
+		<synopsis>Generates a binary attribute (true|false) for incoming and
+			outgoing relations by property.
+		</synopsis>
+		<help>This generator creates a binary attribute (true|false) for
+			incoming and outgoing relations. E.g. for the triple
+			{http://foo.bar/s, http://foo.bar/p, http://foo.bar/o}
+			the relation
+			uri_out_boolean_http://foo.bar/p would be set to true.
+		</help>
+	</operator>
+	<operator>
+		<name>Specific Relation Generator</name>
+		<synopsis>Creates features for a relation specified by the user.
+		</synopsis>
+		<help>This generator creates a set of binary features for a relation
+			specified by the user. Optionally,
+			a predicate specifying the
+			hierarchical relations can be defined for
+			creating the hierarchy.
+		</help>
+	</operator>
+	<operator>
+		<name>Simple Hierarchy Filter</name>
+		<synopsis>Performs attribute selection based on the hierarchy
+			information provided by
+			a generator.
+		</synopsis>
+		<help>This filter exploits the hierarchy given by generators to remove
+			redundant
+			attributes that are too specific, and hence avoids
+			overfitting.
+			It uses either correlation or information gain. With
+			correlation, the
+			more specific out of two hierarchically connected and
+			correlated
+			attributes is removed.
+			With information gain, the more
+			specific out of two hierarchically
+			connected attributes
+			is removed if
+			the difference in information gain of both attributes is
+			not high
+			enough.
+			The threshold for both selection modes has to be set by the
+			user.
+		</help>
+	</operator>
+	<!-- <operator> <name>Schema Matching (PARIS)</name> <synopsis>Detects duplicate 
+		attributes from different sources, and resolves them. </synopsis> <help>Performs 
+		automatic alignment of ontologies, i.e. instances, relations and schema, 
+		based on the PARIS approach (PARIS: Probabilistic Alignment of Relations, 
+		Instances, and Schema) </help> </operator> -->
+	<operator>
+		<name>Hierarchy</name>
+		<synopsis>Performs attribute selection based on the hierarchy
+			information provided by
+			a generator.
+		</synopsis>
+		<help>This filter exploits the hierarchy given by generators to remove
+			redundant
+			attributes that are too specific, and hence avoids
+			overfitting.
+			It uses either correlation or information gain. With
+			correlation, the
+			more specific out of two hierarchically connected and
+			correlated
+			attributes is removed.
+			With information gain, the more
+			specific out of two hierarchically
+			connected attributes
+			is removed if
+			the difference in information gain of both attributes is
+			not high
+			enough.
+			The threshold for both selection modes has to be set by the
+			user.
+		</help>
+	</operator>
+	<operator>
+		<name>Link Explorer</name>
+		<synopsis>Enables semi-automatic exploration of "sameAs" or user
+			specified relations.
+			Presets settings for all nested
+			generators (Forces
+			"Use only URIs" mode).
+		</synopsis>
+		<help>This operator enables semi-automatic exploration of "sameAs"
+			links, or user specified relations,
+			from all available sources, or
+			user defined list of sources, with a specified depth (Number of
+			Hops). Presets settings for all nested generators..
+			It ignores all the
+			operators that are not generators, i.e. do not
+			belong to
+			"BaseGenerator" class.
+		</help>
+	</operator>
+
+	<operator>
+		<name>Data Cube Importer</name>
+		<synopsis>Allows exploration and import of data from Linked Data
+			sources using the RDF Data Cube Vocabulary.
+		</synopsis>
+		<help>This operator allows exploration and import of data from Linked
+			Data sources using the RDF Data Cube Vocabulary.
+		</help>
+	</operator>
+	
+	<operator>
+		<key>Paris Lod Matcher</key>
+		<name>Paris LOD Matcher</name>
+		<synopsis>Performs ontology matching.
+		</synopsis>
+		<help>This operator performs ontology alignment based on the PARIS
+			approach.
+		</help>
+	</operator>
+
+	<operator>
+		<key>Simple Data Fuser</key>
+		<name>Simple Data Fuser</name>
+		<synopsis>Performs data fusion.
+		</synopsis>
+		<help>This operator performs data fusion on the previously matched
+			columns.
+		</help>
+	</operator>
+	
+	<operator>
+	<key>RDF Walk Count Kernel</key>
+	<name>RDF Walk Count Kernel</name>
+	<synopsis>Provides different versions of the RDF Walk Count Kernel</synopsis>
+
+<help>This kernel counts the different walks in the subgraphs (upto the provided Graph Depth) around the instances nodes. The maximum length of the walks to consider is given by the Walk Length parameter.
+
+For this kernel there are 4 different variants.
+
+(Fast) This is a fast approximation of counting all the walks in the subgraph, which is done with the Full setting.
+(Root) Only consider walks that start with the instance node (i.e. the root).
+(Tree) Count all the walks in the subtree that is rooted in the instance node. This is faster than the Full subgraph version, since a tree does not contain cycles.
+(Full) Count all the walks in the subgraph. NOTE, this variant is typically very slow.
+
+
+The Root version of this kernel was defined in: "A Fast and Simple Graph Kernel for RDF", GKD de Vries and S de Rooij, DMoLD (2013).</help>
+	</operator>
+	
+		
+	<operator>
+	<key>RDF WL Sub Tree Kernel</key>
+	<name>RDF WL Sub Tree Kernel</name>
+	<synopsis>Provides different versions of the RDF WL SubTree Kernel</synopsis>
+
+<help>This kernel counts the different full subtrees in the subgraphs (upto the provided Graph Depth) around the instances nodes, using the Weisfeiler-Lehman algorithm. The maximum size of the subtrees is controlled by the number of iterations parameter.
+
+For this kernel there are 4 different variants.
+
+(Fast) This is a fast approximation of counting all the subtrees in the subgraph, which is done with the Full setting.
+(Root) Only consider subtrees that start with the instance node (i.e. the root). NOTE, this setting is included for completeness, it will likely give very bad results.
+(Tree) Count all the subtrees in the subtree that is rooted in the instance node. This is faster than the Full subgraph version, since a tree does not contain cycles.
+(Full) Count all the subtrees in the subgraph.
+
+
+The fast version of this kernel was defined in: "A fast approximation of the Weisfeiler-Lehman graph kernel for RDF data", GKD de Vries, Machine Learning and Knowledge Discovery in Databases, 606-621 (2013)</help>
+	</operator>
+	
+	
+		<operator>
+	<key>Graph Importer</key>
+	<name>Graph Importer</name>
+	<synopsis>Imports RDF graph from SPARQL endpoint or local file, with user specified graph depth.</synopsis>
+
+<help>This operator generates an RDF graph for all input instances, from SPARQL endpoint or local file, with user specified graph depth.
+This operator is intended to be used with the Kernel operators, i.e., the graph output of this operator should be connected to the input port of a kernel operator.
+
+The input instances can be provided through the input ExampleSet port, or the user can define a SPARQL select query to select the instances from the corresponding SPARQL connection.
+The graph depth parameter decides the depth of the subgraph of each instance.
+If the user wants to ignore some properties when generating the graph, they can list them in the "Properties to be ignored" parameter.
+
+
+
+</help>
+	</operator>
+</operatorHelp>

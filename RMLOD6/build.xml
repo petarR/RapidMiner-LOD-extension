@@ -1,0 +1,60 @@
+<project name="RapidMiner_Plugin_Template_Unuk">
+	<description>Build file for the RapidMiner Template extension</description>
+
+	<property name="rm.dir" location="../../workspace1/RapidMiner_Unuk" />
+
+	<property name="build.build" location="build" />
+	<property name="build.resources" location="resources" />
+	<property name="build.lib" location="lib" />
+
+	<property name="check.sources" location="src" />
+
+	<property name="javadoc.targetDir" location="javadoc" />
+
+	<property name="extension.name" value="LOD" />
+	<property name="extension.name.long" value="RapidMiner Linked Open Data Extension [RapidMiner 6]" />
+	<property name="extension.namespace" value="lod" />
+	<property name="extension.vendor" value="University of Mannheim, Data and Web Science Group" />
+	<property name="extension.admin" value="Heiko Paulheim" />
+	<property name="extension.url" value="http://dws.informatik.uni-mannheim.de/en/research/rapidminer-lod-extension" />
+
+	<property name="extension.needsVersion" value="6.0" />
+	<property name="extension.dependencies" value="" />
+
+	<property name="extension.initClass" value="com.rapidminer.PluginInitLOD6" />
+	<property name="extension.objectDefinition" value="/com/rapidminer/resources/ioobjectsLOD6.xml" />
+	<property name="extension.operatorDefinition" value="/com/rapidminer/resources/OperatorsLOD6.xml" />
+	<property name="extension.parseRuleDefinition" value="/com/rapidminer/resources/parserulesLOD6.xml" />
+	<property name="extension.groupProperties" value="/com/rapidminer/resources/groupsLOD6.properties" />
+	<property name="extension.errorDescription" value="/com/rapidminer/resources/i18n/ErrorsLOD6.properties" />
+	<property name="extension.userErrors" value="/com/rapidminer/resources/i18n/UserErrorMessagesLOD6.properties" />
+	<property name="extension.guiDescription" value="/com/rapidminer/resources/i18n/GUILOD6.properties" />
+
+
+	<!-- saxon shit-->
+	<target name="xslt2">
+		<!-- Transform one file into an HTML file -->
+
+		<classpath location="lib/saxon-9.2.jar" />
+
+	</target>
+
+	<target name="TransformAll" depends="xslt2" />
+
+	<!-- Src files -->
+	<path id="build.sources.path">
+		<dirset dir="src">
+			<include name="**" />
+		</dirset>
+	</path>
+	<fileset dir="src" id="build.sources">
+		<include name="**/*.java" />
+	</fileset>
+	<fileset id="build.dependentExtensions" dir="..">
+
+	</fileset>
+
+	<import file="${rm.dir}/build_extension.xml" />
+
+
+</project>

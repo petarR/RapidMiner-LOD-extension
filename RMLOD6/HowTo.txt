@@ -1,0 +1,13 @@
+How to build the RMLOD6:
+-copy all files except the gui package
+-change PluginInitLOD-> PluginInitLOD6 in multiple files (there will be errors)
+
+-be careful that the version is not exectly the same as for RM 5
+
+-when uploading the jar for the compatibility put the following:
+	-for RM5 :blank - 6.0.100
+	-for RM6 6.0.100 - blank
+- be carefull for operators that want to read the type of the Configurable: GraphImporter (line 210)
+
+	
+-OLD description: Note for RapidMiner 6 users: the version provided via the marketplace currently works for RM 5.x. There is a patch for RapidMiner 6, which can be found here.

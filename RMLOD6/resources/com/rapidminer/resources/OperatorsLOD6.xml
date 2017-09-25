@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<operators name="lod" version="5.0"
+	docbundle="com/rapidminer/resources/i18n/OperatorsDocLOD6">
+	<group key="">
+		<group key="Linked Open Data Extension">
+			<group key="Data Import">
+				<icon>import.png</icon>
+				<operator>
+					<key>SPARQL Data Importer</key>
+					<class>lod.importers.LODDataImporter</class>
+				</operator>
+				<operator>
+					<key>Data Cube Importer</key>
+					<class>lod.importers.OLAPDataImporter</class>
+				</operator>
+				<operator>
+					<key>Graph Importer</key>
+					<class>lod.importers.GraphImporter</class>
+				</operator>
+			</group>
+			<group key="Explorers">
+				<icon>branch.png</icon>
+				<operator>
+					<key>Link Explorer</key>
+					<class>lod.containers.SameAsRetrievalContainer</class>
+				</operator>
+			</group>
+			<group key="Linking">
+				<icon>graph_edge_directed.png</icon>
+				<operator>
+					<key>Pattern-based Linker</key>
+					<class>lod.linking.SimpleLinker</class>
+				</operator>
+				<operator>
+					<key>Label-based Linker</key>
+					<class>lod.linking.SPARQLbasedLinker</class>
+				</operator>
+				<operator>
+					<key>DBpedia Lookup Linker</key>
+					<class>lod.linking.LookupLinker</class>
+				</operator>
+				<operator>
+					<key>DBpedia Spotlight Linker</key>
+					<class>lod.linking.SpotlightLinker</class>
+				</operator>
+				<operator>
+					<key>Web Validator</key>
+					<class>lod.linking.WebValidator</class>
+				</operator>
+				<operator>
+					<key>SameAs Linker</key>
+					<class>lod.linking.SameAsLinker</class>
+				</operator>
+			</group>
+			<group key="Generators">
+				<group key="Kernels">
+					<icon>table_column_add.png</icon>
+					<operator>
+						<key>RDF Walk Count Kernel</key>
+						<class>lod.kernels.RDFWalkCountKernelOperator
+						</class>
+					</operator>
+						<operator>
+						<key>RDF WL Sub Tree Kernel</key>
+						<class>lod.kernels.RDFWLSubTreeKernelOperator</class>
+					</operator>
+				
+				</group>
+				<group key="Smart">
+					<icon>table_column_add.png</icon>
+					<operator>
+						<key>Classification Feature Generator</key>
+						<class>lod.generators.smart.operators.ClassificationFeatureGeneratorOperator
+						</class>
+					</operator>
+					<operator>
+						<key>Classification Test Feature Generator</key>
+						<class>lod.generators.smart.operators.ClassificationTestFeatureGeneratorOperator
+						</class>
+					</operator>
+					</group>
+					<icon>table_column_add.png</icon>
+					<operator>
+						<key>Direct Types</key>
+						<class>lod.generators.SimpleTypeFeatureGeneratorOperator</class>
+					</operator>
+					<operator>
+						<key>Data Properties</key>
+						<class>lod.generators.DataPropertyFeatureGeneratorOperator</class>
+					</operator>
+					<operator>
+						<key>Relations</key>
+						<class>lod.generators.RelationNumericFeatureGeneratorOperator
+						</class>
+					</operator>
+					<operator>
+						<key>Qualified Relations</key>
+						<class>lod.generators.RelationTypeNumericFeatureGeneratorOperator
+						</class>
+					</operator>
+					<operator>
+						<key>Custom SPARQL Generator</key>
+						<class>lod.generators.CustomFeatureGeneratorOperator</class>
+					</operator>
+					<operator>
+						<key>Specific Relation Generator</key>
+						<class>lod.generators.SpecificRelationGeneratorOperator</class>
+					</operator>
+					<operator>
+						<key>Relations Value</key>
+						<class>lod.generators.RelationValueNumericFeatureGeneratorOperator
+						</class>
+					</operator>
+
+				</group>
+				<group key="Filters">
+					<icon>table_column_delete.png</icon>
+					<operator>
+						<key>Simple Hierarchy Filter</key>
+						<class>lod.filters.SimpleFilter</class>
+					</operator>
+					<!-- <operator> <key>Schema Matching (PARIS)</key> <class>lod.schemamatching.operators.ParisMatcher</class> 
+						</operator> <operator> <key>Hierarchy</key> <class>lod.filters.HierarchyOperator</class> 
+						</operator> -->
+				</group>
+
+				<group key="Schema Matching">
+					<icon>logic_and.png</icon>
+					<operator>
+						<key>Paris LOD Matcher</key>
+						<class>de.dwslab.rmdi.operators.matchers.ParisLODMatcherOperator
+						</class>
+					</operator>
+				</group>
+				<group key="Data Fusers">
+					<icon>logic_and.png</icon>
+					<operator>
+						<key>Simple Data Fuser</key>
+						<class>de.dwslab.rmdi.operators.fusers.SimpleFuserOperator</class>
+					</operator>
+				</group>
+				<group key="Representation">
+					<icon>table_column_delete.png</icon>
+					<operator>
+						<key>Vector Representation</key>
+						<class>lod.vectorcreation.VectorRepresentationOperator</class>
+					</operator>
+					<!-- <operator> <key>Schema Matching (PARIS)</key> <class>lod.schemamatching.operators.ParisMatcher</class> 
+						</operator> <operator> <key>Hierarchy</key> <class>lod.filters.HierarchyOperator</class> 
+						</operator> -->
+				</group>
+
+			</group>
+		</group>
+</operators>
